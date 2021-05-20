@@ -1,0 +1,29 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon -r dotenv/config src/index.js dotenv_config_path=./config/dev.env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.0",
+    "sharp": "^0.28.2",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "dotenv": "^9.0.2",
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.7"
+  }
+}
