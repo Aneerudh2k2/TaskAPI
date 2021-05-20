@@ -13,7 +13,9 @@ router.post("/users", async (req, res) => {
 
   try {
     await user.save();
-    sendWelcomeEmail(user.email, user.name);
+    sendWelcomeEmail(user.email, user.name)
+      .then((info) => console.log("welcome mail sent: ", info))
+      .catch(console.error);
     const token = await user.getAuthToken();
     // toJSON method is automatically called for sending the secured user's data
     // i.e sending without password and token (Reference: see index.js comments)
@@ -102,7 +104,9 @@ router.patch("/users/me", auth, async (req, res) => {
 router.delete("/users/me", auth, async (req, res) => {
   try {
     await req.user.remove();
-    sendCancelEmail(req.user.email, req.user.name);
+    sendCancelEmail(req.user.email, req.user.name)
+      .then((info) => console.log("Cancellation mail sent: ", info))
+      .catch(console.error);
     res.send(req.user);
   } catch (e) {
     res.status(500).send(e);

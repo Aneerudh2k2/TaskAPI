@@ -8,8 +8,8 @@ let transporter = nodemailer.createTransport({
   },
 });
 
-const sendWelcomeEmail = (email, name) => {
-  transporter.sendMail({
+const sendWelcomeEmail = async (email, name) => {
+  await transporter.sendMail({
     from: process.env.EMAIL,
     to: email,
     subject: "Getting started",
@@ -17,8 +17,8 @@ const sendWelcomeEmail = (email, name) => {
   });
 };
 
-const sendCancelEmail = (email, name) => {
-  transporter.sendMail({
+const sendCancelEmail = async (email, name) => {
+  await transporter.sendMail({
     from: process.env.EMAIL,
     to: email,
     subject: "Sorrowed of losing a USER",
