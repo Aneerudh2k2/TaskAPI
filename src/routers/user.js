@@ -17,7 +17,7 @@ router.post("/users", async (req, res) => {
     const token = await user.getAuthToken();
     // toJSON method is automatically called for sending the secured user's data
     // i.e sending without password and token (Reference: see index.js comments)
-    res.status(210).send({ user, token });
+    res.status(201).send({ user, token });
   } catch (e) {
     res.status(400).send(e);
   }
