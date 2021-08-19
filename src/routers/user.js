@@ -8,6 +8,36 @@ const { sendWelcomeEmail, sendCancelEmail } = require("../email/account");
 
 // User endpoints
 // signing up route
+
+router.get("/", (req, res) => {
+  res.send({
+    user: {
+      toPostUsersDetails: "/users",
+      toGetUserProfile_toUpdate_toDelete_with_http_method: "/users/me",
+      toGetAvatar: "/users/me/avatar",
+      toLogin: "/users/login",
+      toLogout: "/users/logout",
+      toLogout: "/users/logoutAll",
+      toDeleteUser: "/users/me  using delete http method",
+      toPostProfilePhoto: "/users/me/avatar using post http method",
+      toDelProfilePhoto: "/users/me/avatar using delete http method",
+      toGetProfilePhoto: "/users/:id/avatar",
+    },
+    task: {
+      toPostTask: "/tasks",
+      toSearchTask: {
+        taskPaging: "GET /tasks?limit=10",
+        taskSorting:
+          "GET /tasks?sortBy=createdAt_asc Or updatedAt_asc and vice versa",
+        taskCompleted: "GET /tasks?completed=true/false",
+      },
+      toUpdateTask: "PATCH /tasks/:id",
+      toGetTasks: "GET /tasks/:id",
+      toDelTask: "DELETE /tasks/:id",
+    },
+  });
+});
+
 router.post("/users", async (req, res) => {
   const user = new User(req.body);
 
